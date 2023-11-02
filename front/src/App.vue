@@ -1,47 +1,55 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from "vue";
+import {reactive, ref} from "vue"
 
-// 現在時刻
-const now = new Date();
-const nowStr = now.toLocaleTimeString();
-let timeStr = nowStr;
-const timeStrRef = ref(nowStr);
+const url = ref("https://vuejs.org/");
+const isSendButtonDisablesd = ref(true);
+const widthOrHeight = ref("height"); // widthに変更される可能性があるのでref関数が必要。
+const widthOrHeightValue = ref(100);
 
-function changeTime(): void {
-  const newTime = new Date();
-  const newTimeStr = newTime.toLocaleTimeString();
-  timeStrRef.value = newTimeStr;
-}
-setInterval(changeTime, 1000);
+const imgAttributes = reactive({
+  src: "/images/logo.svg",
+  alt: "Vueのロゴ",
+  width: 75,
+  height: 75
+})
 
-// 円の計算
+const msg = ref("こんちわ―世界");
+const isTextColorRed = ref(true);
+const isBgColorBlue = ref(false);
 
-const data = reactive({
-  PI: 3.14,
-  radius: Math.round(Math.random() * 10)
-});
-
-const area = computed(
-  ():number => {
-    return data.radius * data.radius * data.PI;
-  }
-);
-
-setInterval(
-  ():void => {
-    data.radius = Math.round(Math.random() * 10);
-  },
-  1000
-);
 
 </script>
 
 <template>
-  <h1>時刻</h1>
-  <p>現在時刻： {{ timeStr }}</p>
-  <p>現在時刻(ref)： {{ timeStrRef }}</p>
+  <!-- v-bindディレクティブ -->
+  <p><a v-bind:href="url" target="_blank">Vue.jsのサイト</a></p>
+  <p><a :href="url" target="_blank">Vue.jsのサイト（省略系）</a></p>  <!-- 省略形は基本的に使わない。 -->
+  <p><a v-bind:href="url + 'guide/introduction.html'" target="_blank">Vue.jsガイドページ</a></p>
+  <p><a href="{{ url }}">{{ url }}</a></p>  <!-- もちろん、属性の値に変数を使用することは不可なので、ディレクティブを使用する -->
 
-  <h1>円周率</h1>
-  <p>半径{{ data.radius }}の円の面積を円周率{{ data.PI }}で計算すると、{{ area }}になる</p>
+  <!-- 値がない属性に対してのv-bind -->
+  <p><button type="button" v-bind:disabled="isSendButtonDisablesd">送信</button></p>
 
+  <!-- テンプレート変数を使用したv-bindの使用例 -->
+  <p><img src="./assets/logo.svg" v-bind:[widthOrHeight]="widthOrHeightValue" alt="VueLogo"></p>
+
+  <!-- templateの属性の方が優先される -->
+  <p><img v-bind="imgAttributes"></p> <!-- <img src="/images/logo.svg" alt="Vueのロゴ" width="75" height="75"> -->
+  <p><img v-bind="imgAttributes" alt="ロゴです～～"></p><!-- <img src="/images/logo.svg" alt="ロゴです～～" width="75" height="75"> -->
+
+  <!-- v-bind:classで値にboolを指定することで、classの表示有無を記述できる -->
+  <p v-bind:class="{ textColorRed: isTextColorRed }">
+    {{ msg }}
+  </p>
+
+  <p v-bind:class="{ textColorRed: isBgColorBlue }">
+    {{ msg }}
+  </p>
 </template>
+
+<style scoped>
+.textColorRed {
+  color: red;
+}
+
+</style>
