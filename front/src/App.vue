@@ -2,20 +2,16 @@
 import {reactive, ref} from "vue"
 
 
-const price = ref(1000);
+const hello = ref("hello");
 </script>
 
 <template>
-  <section>
-    <input type="number" v-model="price">円<br>
-    <p>金額は{{ price }}です</p>
-    <p v-once>金額は{{ price }}円です（初期値から変化しない）</p>
-  </section>
-
- 
+  <p v-cloak>{{ hello }}</p>
 </template>
 
 <style scoped>
-
+[v-cloak] {
+  display: none;
+}
 
 </style>
