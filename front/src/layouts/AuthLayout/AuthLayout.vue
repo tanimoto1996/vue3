@@ -2,7 +2,13 @@
 import CheerFooterCopywrite from '../../components/atom/footer/footerCopyWrite/CheerFooterCopyWrite.vue';
 import CheerHeaderAuth from '../../components/organizms/header/HeaderAuth/CheerHeaderAuth.vue';
 
-
+export default {
+    name: 'AuthLayout',
+    components: {
+        CheerHeaderAuth,
+        CheerFooterCopywrite
+    }
+};
 </script>
 
 <template>
