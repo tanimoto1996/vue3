@@ -7,7 +7,7 @@ import { HeaderTitleProp } from '@/components/atom/header/headerTitle/type';
 <template>
     <header class="c-header-auth">
         <div class="c-header-auth__container">
-            <HeaderIcon :width="100"/>
+            <HeaderIcon :width="50"/>
             <HeaderTitle :title="HeaderTitleProp.Staff"/>
         </div>
     </header>

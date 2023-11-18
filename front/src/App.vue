@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import HomeView from './views/HomeView.vue'
 </script>
 
 <template>
-    <HomeView />
+  <div class="wrapper">
+    <router-view />
+  </div>
 </template>
 
 <style lang="scss" scoped>
