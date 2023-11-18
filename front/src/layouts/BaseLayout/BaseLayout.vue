@@ -1,14 +1,19 @@
 <script lang="ts">
-import CheerDivider from '@/components/atom/divider/CheerDivider.vue';
+import CheerHeaderAuth from '../../components/organizms/header/HeaderAuth/CheerHeaderAuth.vue';
 import CheerFooterCopywrite from '../../components/atom/footer/footerCopyWrite/CheerFooterCopyWrite.vue';
 
-
+export default {
+    name: 'BaseLayout',
+    components: {
+        CheerHeaderAuth,
+        CheerFooterCopywrite
+    }
+};
 </script>
 
 <template>
     <div class="l-base-layout">
-        <header class="l-base-layout__header"></header>
-        <CheerDivider />
+        <CheerHeaderAuth />
 
         <slot />
         <footer class="l-base-layout__footer">
