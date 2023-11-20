@@ -3,6 +3,7 @@ import { reactive } from 'vue';
 import BaseLayout from '../layouts/BaseLayout/BaseLayout.vue';
 import PageTitle from '../components/atom/pageTitle/PageTitle.vue';
 import CheerDivider from '@/components/atom/divider/CheerDivider.vue';
+import CheerLinkWithIcon from '../components/atom/link/CheerLinkWithIcon/CheerLinkWithIcon.vue';
 import FormGroupInput from '@/components/molecules/form/FormGroupInput/FormGroupInput.vue';
 
 const state = reactive<Person>({ email: '', password: '' });
