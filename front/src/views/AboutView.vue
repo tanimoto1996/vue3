@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import BaseLayout from '../layouts/BaseLayout/BaseLayout.vue';
+import { ButtonVariantProp } from '@/components/atom/button/CheerButton/type';// 型を指定する（色などを変更する）にはインポートする必要あり
+import CheerButton from '@/components/atom/button/CheerButton/CheerButton.vue';
 import PageTitle from '../components/atom/pageTitle/PageTitle.vue';
 import CheerDivider from '@/components/atom/divider/CheerDivider.vue';
 import CheerLinkWithIcon from '../components/atom/link/CheerLinkWithIcon/CheerLinkWithIcon.vue';
@@ -35,7 +37,7 @@ interface Person {
             class="input-password"
           />
           <CheerLinkWithIcon class="link-reset-password" text="パスワードを忘れた方" href=""/>
-          <CheerButton class="button" text="ボタン"/>
+          <CheerButton class="button" text="ボタン" :variant="ButtonVariantProp.Secondary" :is-outline="true"  />
 
           <CheerParagraph>
             <CheerLink text="利用規約" href=""/>

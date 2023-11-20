@@ -3,11 +3,12 @@ import { computed } from 'vue';
 import { ButtonVariantProp, type ButtonProps } from './type';
 
 const props = withDefaults(defineProps<ButtonProps>(),{
-    variant: ButtonVariantProp.Primary,
+    variant: ButtonVariantProp.Primary, // 使う側で型を呼び出してからオブジェクト参照する必要あり
     type: 'button',
     isOutline: false,
 });
 
+// 使う側で:is-outline属性を定義すると変化あり
 const computedClasses = computed<string[]>(() => {
     const classes: string[] = [];
 
